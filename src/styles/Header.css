@@ -1,0 +1,38 @@
+.cabecera {
+  background-color: #2f5233;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navegacion {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  width: 100%;
+}
+  
+  .boton-nav {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .boton-nav.activo {
+    background-color: #1e351f;
+    border-radius: 5px;
+  }
+  
+  .boton-nav.animando {
+    animation: resaltar 0.5s ease-in-out;
+  }
+  
+  @keyframes resaltar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
