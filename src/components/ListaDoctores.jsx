@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import DoctorItem from './DoctorItem'
+import FormularioDoctor from './FormularioDoctor.jsx'
 import '../styles/ListaDoctores.css'
 
 export default function ListaDoctores() {
   const [doctores, setDoctores] = useState([])
+  const [agregandoDoctor, setAgregandoDoctor] = useState(false)
 
   useEffect(() => {
     setDoctores([
@@ -12,10 +14,14 @@ export default function ListaDoctores() {
     ])
   }, [])
 
+  if (agregandoDoctor) {
+    return <FormularioDoctor regresar={() => setAgregandoDoctor(false)} />
+  }
+
   return (
     <div className="lista-doctores-contenedor">
       <h2 className="titulo-lista">Lista de doctores</h2>
-      <button className="boton-agregar-doctor">Agregar nuevo doctor</button>
+      <button className="boton-agregar-doctor" onClick={() => setAgregandoDoctor(true)}>Agregar nuevo doctor</button>
       <table className="tabla-doctores">
         <thead>
           <tr>
