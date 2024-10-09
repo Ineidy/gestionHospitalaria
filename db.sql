@@ -84,3 +84,43 @@ CREATE TABLE cuentas(
 CREATE INDEX IX_precio ON cuentas(precio)
 
 
+#doctor 
+
+CREATE TABLE doctor(
+    id INT NOT NULL AUTO_INCREMENT ,
+    nombre_completo VARCHAR(255) NOT NULL,
+    genero ENUM('femenino', 'masculino') NOT NULL,
+    especialidad_fk INT NOT NULL,
+    fecha_nacimiento VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_id PRIMARY KEY(id),
+	CONSTRAINT FK_especialidad_doctor FOREIGN KEY (especialidad_fk) REFERENCES especialidad(id)
+);
+
+#comunicacion_doctores
+
+CREATE TABLE comunicacion_doctores(
+    doctor_fk INT NOT NULL,
+    tipo ENUM('celular', 'telefono', 'email', 'redes sociales') NOT NULL,
+    contacto VARCHAR(255) NOT NULL,
+    CONSTRAINT FK_doctor_comunicacion FOREIGN KEY (doctor_fk) REFERENCES doctor(id)
+);
+
+
+#personal
+
+CREATE TABLE personal(
+    hospital_fk INT NOT NULL,
+    doctor_fk INT NOT NULL,
+    CONSTRAINT FK_hospital_personal FOREIGN KEY (hospital_fk) REFERENCES hospital(nit),
+    CONSTRAINT FK_doctor_personal FOREIGN KEY (doctor_fk) REFERENCES doctor(id)
+);
+
+
+#poblacion
+
+CREATE TABLE poblacion(
+    doctor_fk INT NOT NULL,
+    paciente_fk INT NOT NULL,
+    CONSTRAINT FK_doctor_poblacion FOREIGN KEY (doctor_fk) REFERENCES doctor(id),
+    CONSTRAINT FK_paciente_poblacion FOREIGN KEY (paciente_fk) REFERENCES paciente(cedula)
+);
