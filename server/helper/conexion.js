@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise';
 
+
 class driver{
     connection;
     async conexion(){
