@@ -1,23 +1,22 @@
-// Importar la conexión a la base de datos
-const Conexion = require('../helper/conexion');
+import Conexion from '../helper/conexion.js';
 
 class Doctor extends Conexion {
     constructor() {
         super();
     }
 
-    // Obtener la lista de todos los doctores
     async listaDoctores() {
         try {
             let driver = await this.conexion;
             const [results] = await driver.data.query('SELECT * from doctor');
             return { status: 200, message: "Lista de todos los doctores", data: results };
         } catch (error) {
+            console.log(error);
             throw new Error(JSON.stringify({ status: 500, message: "Ocurrió un error al obtener todos los doctores", data: error }));
+            
         }
     }
 
-    // Obtener información de un doctor por ID
     async informacionDoctor(id) {
         try {
             let driver = await this.conexion;
@@ -28,7 +27,6 @@ class Doctor extends Conexion {
         }
     }
 
-    // Guardar un nuevo doctor
     async guardar({ nombre, genero, especialidad, fecha_nacimiento, estado }) {
         try {
             let driver = await this.conexion;
@@ -41,8 +39,6 @@ class Doctor extends Conexion {
             throw new Error(JSON.stringify({ status: 500, message: `Ocurrió un error al guardar la información del doctor ${nombre}`, data: error }));
         }
     }
-
-    // Eliminar un doctor por ID
     async eliminar(id) {
         try {
             let driver = await this.conexion;
@@ -54,4 +50,4 @@ class Doctor extends Conexion {
     }
 }
 
-module.exports = Doctor;
+export default Doctor;

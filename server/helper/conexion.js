@@ -1,9 +1,8 @@
 import mysql from 'mysql2/promise';
 
-class Driver {
+class Conexion {
     connection = null;
 
-    // Método para crear la conexión
     async conexion() {
         try {
             this.connection = await mysql.createConnection({
@@ -19,7 +18,6 @@ class Driver {
         }
     }
 
-    // Método para cerrar la conexión
     async cerrarConexion() {
         if (this.connection) {
             try {
@@ -31,7 +29,6 @@ class Driver {
         }
     }
 
-    // Método para ejecutar consultas
     async ejecutarConsulta(query, params = []) {
         if (!this.connection) {
             console.error('No hay conexión a la base de datos.');
@@ -47,15 +44,16 @@ class Driver {
     }
 }
 
-// Ejemplo de uso
+
 (async () => {
-    const db = new Driver();
+    const db = new Conexion();
     await db.conexion();
 
-    // Ejemplo de una consulta
     const doctores = await db.ejecutarConsulta('SELECT * FROM doctor');
     console.log(doctores);
 
-    // Cerrar la conexión cuando ya no se necesite
     await db.cerrarConexion();
 })();
+
+
+export default Conexion;;

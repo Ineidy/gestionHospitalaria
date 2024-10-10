@@ -1,11 +1,10 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const doctorController = require('../controllers/doctorController');
+import * as doctorController from '../controller/doctorController.js';
 
-// Rutas CRUD para doctores
 router.get('/doctores', doctorController.obtenerTodosLosDoctores);
 router.get('/doctor/:id', doctorController.obtenerUnDoctorPorId);
 router.post('/doctor', doctorController.guardarDoctor);
 router.delete('/doctor/:id', doctorController.eliminarDoctor);
 
-module.exports = router;
+export default  router;
