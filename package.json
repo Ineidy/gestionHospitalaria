@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "node  --watch ./server/helper/conexion.js",
     "start": "node  --watch ./server/app.js",
     "build": "vite build",
     "lint": "eslint .",

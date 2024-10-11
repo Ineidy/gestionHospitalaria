@@ -25,14 +25,24 @@
 
     export const guardarDoctor = async (req, res) => {
         try {
-            let doctor = new Doctor();
-            let resultado = await doctor.guardar(req.body);
-            if (resultado.status === 201) return res.status(201).json(resultado);
+            const { nombre_completo, genero, especialidad, fecha_nacimiento, estado } = req.body;
+            console.log(req.body);
+    
+            const doctor = new Doctor();
+            const resultado = await doctor.guardar({
+                nombre: nombre_completo,
+                genero,
+                especialidad,
+                fecha_nacimiento,
+                estado
+            });
+            
+            res.status(201).json(resultado);
         } catch (error) {
-            let err = JSON.parse(error.message);
-            if (err.status === 500) return res.status(err.status).json(err);
+            res.status(500).json(JSON.parse(error.message));
         }
     };
+    
 
     export const eliminarDoctor = async (req, res) => {
         try {
