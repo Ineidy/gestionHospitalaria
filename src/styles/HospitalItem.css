@@ -1,0 +1,32 @@
+.fila-hospital:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .celda-nombre {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .avatar-hospital {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .estado-hospital {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .estado-hospital.aprobado {
+    background-color: #e6f4ea;
+    color: #1e8e3e;
+  }
+  
+  .estado-hospita.rechazado {
+    background-color: #fce8e6;
+    color: #d93025;
+  }

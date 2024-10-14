@@ -47,3 +47,27 @@
             if (err.status === 500) return res.status(err.status).json(err);
         }
     };
+
+    export const obtenerTodosLosHospitales = async (req, res) => {
+        try {
+            let doctor = new Doctor();
+            let resultado = await doctor.listarHospitales();
+            if (resultado.status === 200) return res.status(200).json(resultado);
+        } catch (error) {
+            let err = JSON.parse(error.message);
+            if (err.status === 500) return res.status(err.status).json(err);
+        }
+    };
+
+
+    export const eliminarHospitales = async (req, res) => {
+        try {
+            let doctor = new Doctor();
+            let { nit } = req.params;
+            let resultado = await doctor.eliminarHospitales(nit);
+            if (resultado.status === 200) return res.status(200).json(resultado);
+        } catch (error) {
+            let err = JSON.parse(error.message);
+            if (err.status === 500) return res.status(err.status).json(err);
+        }
+    };

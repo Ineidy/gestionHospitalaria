@@ -3,6 +3,7 @@ import Header from './components/Header';
 import ListaDoctores from './components/ListaDoctores';
 import ListaPacientes from './components/ListaPacientes';
 import './App.css'
+import ListaHospitales from './components/ListaHospitales';
 
 export default function App() {
   const [seccionActual, setSeccionActual] = useState('Doctors');
@@ -16,7 +17,7 @@ export default function App() {
       <Header seccionActual={seccionActual} cambiarSeccion={cambiarSeccion} />
       {seccionActual === 'Doctors' && <ListaDoctores />}
       {seccionActual === 'Patients' && <ListaPacientes />}
-      {/* Puedes agregar más secciones aquí */}
+      {seccionActual === 'Hospitals' && <ListaHospitales />}
     </div>
   );
 }

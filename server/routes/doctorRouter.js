@@ -6,5 +6,7 @@ router.get('/doctores', doctorController.obtenerTodosLosDoctores);
 router.delete('/doctor/:id', doctorController.eliminarDoctor);
 router.get('/pacientes', doctorController.obtenerTodosLosPacientes);
 router.delete('/paciente/:cedula', doctorController.eliminarPacientes);
+router.get('/hospitales', doctorController.obtenerTodosLosHospitales);
+router.delete('/hospital/:nit', doctorController.eliminarHospitales);
 
 export default  router;
