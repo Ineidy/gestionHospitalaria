@@ -89,6 +89,22 @@ class Doctor extends Conexion {
             if (connection) connection.release();
         }
     }
+
+    async listarAvisos() {
+        let connection;
+        try {
+            connection = await this.conexion();
+            let query = 'SELECT * FROM aviso';
+            const [results] = await connection.query(query);
+            return { status: 200, message: "Lista de todos los Avisos", data: results };
+        } catch (error) {
+            console.log(error);
+            throw new Error(JSON.stringify({ status: 500, message: "Ocurrió un error al obtener todos los Avisos", data: error }));
+        } finally {
+            if (connection) connection.release();
+        }
+    }
+
 }
 
 export default Doctor;

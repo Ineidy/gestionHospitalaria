@@ -8,5 +8,7 @@ router.get('/pacientes', doctorController.obtenerTodosLosPacientes);
 router.delete('/paciente/:cedula', doctorController.eliminarPacientes);
 router.get('/hospitales', doctorController.obtenerTodosLosHospitales);
 router.delete('/hospital/:nit', doctorController.eliminarHospitales);
+router.get('/avisos', doctorController.obtenerTodosLosAvisos);
+
 
 export default  router;

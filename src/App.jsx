@@ -4,6 +4,7 @@ import ListaDoctores from './components/ListaDoctores';
 import ListaPacientes from './components/ListaPacientes';
 import './App.css'
 import ListaHospitales from './components/ListaHospitales';
+import ListaAvisos from './components/ListaAvisos';
 
 export default function App() {
   const [seccionActual, setSeccionActual] = useState('Doctors');
@@ -18,6 +19,7 @@ export default function App() {
       {seccionActual === 'Doctors' && <ListaDoctores />}
       {seccionActual === 'Patients' && <ListaPacientes />}
       {seccionActual === 'Hospitals' && <ListaHospitales />}
+      {seccionActual === 'Notice' && <ListaAvisos />}
     </div>
   );
 }
