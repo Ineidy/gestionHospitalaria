@@ -23,3 +23,27 @@
             if (err.status === 500) return res.status(err.status).json(err);
         }
     };
+
+    export const obtenerTodosLosPacientes = async (req, res) => {
+        try {
+            let doctor = new Doctor();
+            let resultado = await doctor.listaPacientes();
+            if (resultado.status === 200) return res.status(200).json(resultado);
+        } catch (error) {
+            let err = JSON.parse(error.message);
+            if (err.status === 500) return res.status(err.status).json(err);
+        }
+    };
+
+
+    export const eliminarPacientes = async (req, res) => {
+        try {
+            let doctor = new Doctor();
+            let { cedula } = req.params;
+            let resultado = await doctor.eliminarPacientes(cedula);
+            if (resultado.status === 200) return res.status(200).json(resultado);
+        } catch (error) {
+            let err = JSON.parse(error.message);
+            if (err.status === 500) return res.status(err.status).json(err);
+        }
+    };

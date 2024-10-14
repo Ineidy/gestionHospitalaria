@@ -11,8 +11,8 @@ export default function DoctorItem({ doctor, onDelete }) {
   return (
     <tr className="fila-doctor">
       <td className="celda-nombre">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvxH_2bycXE-UuNXEY_yXMWEqpUuHCU4CZQ&s" alt={doctor.nombre_completo} className="avatar-doctor" />
-        <span>{doctor.nombre_completo}</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvxH_2bycXE-UuNXEY_yXMWEqpUuHCU4CZQ&s" alt={doctor.nombre_completo} className="avatar-doctor" />
+          <span>{doctor.nombre_completo}</span>
       </td>
       <td>{doctor.id}</td>
       <td>{doctor.fecha_nacimiento}</td>

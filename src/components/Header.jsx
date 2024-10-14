@@ -13,7 +13,7 @@ export default function Header({ seccionActual, cambiarSeccion }) {
   return (
     <header className="cabecera">
       <nav className="navegacion">
-        {['Users', 'Patients', 'Hospitals', 'Notice', 'Help Center'].map((seccion) => (
+        {['Doctors', 'Patients', 'Hospitals', 'Notice', 'Help Center'].map((seccion) => (
           <button
             key={seccion}
             className={`boton-nav ${seccionActual === seccion ? 'activo' : ''} ${animando ? 'animando' : ''}`}
