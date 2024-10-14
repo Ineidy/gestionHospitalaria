@@ -105,6 +105,22 @@ class Doctor extends Conexion {
         }
     }
 
+
+    async listarContactos() {
+        let connection;
+        try {
+            connection = await this.conexion();
+            let query = 'SELECT * FROM contacto_hospital';
+            const [results] = await connection.query(query);
+            return { status: 200, message: "Lista de todos los Contactos", data: results };
+        } catch (error) {
+            console.log(error);
+            throw new Error(JSON.stringify({ status: 500, message: "Ocurrió un error al obtener todos los Contactos", data: error }));
+        } finally {
+            if (connection) connection.release();
+        }
+    }
+
 }
 
 export default Doctor;

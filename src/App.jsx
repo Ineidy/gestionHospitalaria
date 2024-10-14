@@ -5,6 +5,7 @@ import ListaPacientes from './components/ListaPacientes';
 import './App.css'
 import ListaHospitales from './components/ListaHospitales';
 import ListaAvisos from './components/ListaAvisos';
+import ListaContactosHospital from './components/ListaContactosHospital';
 
 export default function App() {
   const [seccionActual, setSeccionActual] = useState('Doctors');
@@ -20,6 +21,7 @@ export default function App() {
       {seccionActual === 'Patients' && <ListaPacientes />}
       {seccionActual === 'Hospitals' && <ListaHospitales />}
       {seccionActual === 'Notice' && <ListaAvisos />}
+      {seccionActual === 'Help Center' && <ListaContactosHospital />}
     </div>
   );
 }

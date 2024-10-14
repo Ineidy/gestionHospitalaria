@@ -49,10 +49,10 @@ export default function ListaAvisos() {
       <table className="tabla-avisos">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Nit Hospital</th>
             <th>Título</th>
             <th>Contenido</th>
-            <th>Eliminar</th>
+            <th>Fecha</th>
           </tr>
         </thead>
         <tbody>
