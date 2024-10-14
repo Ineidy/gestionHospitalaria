@@ -1,5 +1,8 @@
 import express from 'express';
+import cors from 'cors';
 const app = express();
+
+app.use(cors());
 import doctorRouter from './routes/doctorRouter.js';
 
 app.use(express.json());
