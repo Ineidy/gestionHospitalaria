@@ -24,6 +24,20 @@
         }
     };
 
+
+    export const agregarDoctor = async (req, res) => {
+        try {
+            const { doctorData, contactoData } = req.body;
+            const doctor = new Doctor();
+            const resultado = await doctor.agregarDoctor(doctorData, contactoData);
+            res.status(resultado.status).json(resultado);
+        } catch (error) {
+            let err = JSON.parse(error.message);
+            res.status(err.status).json(err);
+        }
+    };
+
+
     export const obtenerTodosLosPacientes = async (req, res) => {
         try {
             let doctor = new Doctor();

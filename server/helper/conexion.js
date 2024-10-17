@@ -5,7 +5,7 @@ class Conexion {
     constructor() {
         this.pool = mysql.createPool({
             host: 'localhost',
-            user: 'root',
+            user: 'campus2023',
             password: 'campus2023',
             port: 3306,
             database: 'hospital',

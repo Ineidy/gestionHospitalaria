@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import * as doctorController from '../controller/doctorController.js';
 
+router.post('/doctor', doctorController.agregarDoctor)
 router.get('/doctores', doctorController.obtenerTodosLosDoctores);
 router.delete('/doctor/:id', doctorController.eliminarDoctor);
 router.get('/pacientes', doctorController.obtenerTodosLosPacientes);

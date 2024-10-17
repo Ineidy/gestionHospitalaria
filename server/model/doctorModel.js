@@ -33,6 +33,31 @@ class Doctor extends Conexion {
         }
     }
 
+
+    async agregarDoctor(doctorData, contactoData) {
+        let connection;
+        try {
+            connection = await this.conexion();
+            const [resultDoctor] = await connection.query(
+                'INSERT INTO doctor (nombre_completo, genero, especialidad_fk, fecha_nacimiento) VALUES (?, ?, ?, ?)',
+                [doctorData.nombre_completo, doctorData.genero, doctorData.especialidad_fk, doctorData.fecha_nacimiento]
+            );
+            const doctorId = resultDoctor.insertId; 
+            const contactPromises = contactoData.map(contacto => {
+                return connection.query(
+                    'INSERT INTO comunicacion_doctores (doctor_fk, tipo, contacto) VALUES (?, ?, ?)',
+                    [doctorId, contacto.tipo, contacto.contacto]
+                );
+            });
+            await Promise.all(contactPromises);
+            return { status: 200, message: "Doctor y contactos agregados exitosamente" };
+        } catch (error) {
+            throw new Error(JSON.stringify({ status: 500, message: "Error al agregar el doctor", data: error }));
+        } finally {
+            if (connection) connection.release();
+        }
+    }
+
     
     async listaPacientes() {
         let connection;
