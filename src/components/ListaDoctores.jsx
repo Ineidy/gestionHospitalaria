@@ -11,8 +11,7 @@ export default function ListaDoctores() {
     const obtenerDoctores = async () => {
       try {
         const response = await fetch('http://localhost:3000/api/doctores');
-        const data = await response.json();
-        console.log(data); 
+        const data = await response.json(); 
         if (data.status === 200) {
           setDoctores(data.data);
         }

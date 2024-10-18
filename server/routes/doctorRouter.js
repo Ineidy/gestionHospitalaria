@@ -1,9 +1,10 @@
 import express from 'express';
 const router = express.Router();
 import * as doctorController from '../controller/doctorController.js';
+import { obtenerDoctors } from '../limit/doctoresLimit.js';
 
 router.post('/doctor', doctorController.agregarDoctor)
-router.get('/doctores', doctorController.obtenerTodosLosDoctores);
+router.get('/doctores', obtenerDoctors ,doctorController.obtenerTodosLosDoctores);
 router.delete('/doctor/:id', doctorController.eliminarDoctor);
 router.get('/pacientes', doctorController.obtenerTodosLosPacientes);
 router.delete('/paciente/:cedula', doctorController.eliminarPacientes);

@@ -39,7 +39,7 @@ class Doctor extends Conexion {
         try {
             connection = await this.conexion();
             const [resultDoctor] = await connection.query(
-                'INSERT INTO doctor (nombre_completo, genero, especialidad_fk, fecha_nacimiento) VALUES (?, ?, ?, ?)',
+                'INSERT INTO doctor (nombre_completo, genero, especialidad_fk, fecha_nacimiento, estado) VALUES (?, ?, ?, ?, "Aprobado")',
                 [doctorData.nombre_completo, doctorData.genero, doctorData.especialidad_fk, doctorData.fecha_nacimiento]
             );
             const doctorId = resultDoctor.insertId; 

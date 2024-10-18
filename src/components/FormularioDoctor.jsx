@@ -22,11 +22,10 @@ export default function FormularioDoctor({ regresar }) {
     const contactoData = [
       { tipo: 'email', contacto: email },
       { tipo: 'telefono', contacto: telefono },
-    ].filter((c) => c.contacto); // Filtra contactos vacíos
+    ].filter((c) => c.contacto); 
 
     try {
-      // Enviar datos del doctor al servidor
-      const response = await fetch('/api/doctores', {
+      const response = await fetch('http://localhost:3000/api/doctor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,9 +36,8 @@ export default function FormularioDoctor({ regresar }) {
       const result = await response.json();
 
       if (result.status === 200) {
-        // Doctor agregado correctamente
         console.log('Doctor agregado', result.data);
-        regresar(); // Regresar a la vista anterior
+        regresar();
       } else {
         console.error('Error al agregar el doctor', result.message);
       }
